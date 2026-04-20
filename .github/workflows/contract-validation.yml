@@ -1,0 +1,43 @@
+name: Contract Validation
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  validate-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Build the project
+        run: npm run build
+      
+      - name: Validate contracts
+        run: npx nxsp validate all
+        env:
+          NXSP_NAMESPACE_PATH: ${{ github.workspace }}/namespace
+      
+      - name: Check for changes
+        run: git diff
+      
+      - name: Commit and push changes
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add contracts/
+          git commit -m 'Update contract compatibility flags' || echo 'No changes to commit'
+          git push

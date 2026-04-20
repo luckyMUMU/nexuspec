@@ -1,0 +1,292 @@
+/* 全局样式 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* 应用容器 */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 应用头部 */
+.app-header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.app-header p {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* 导航栏 */
+.app-nav {
+  background-color: white;
+  padding: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.app-nav button {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.app-nav button:hover {
+  background-color: #e0e0e0;
+}
+
+.app-nav button.active {
+  background-color: #3498db;
+  color: white;
+}
+
+/* 主内容区域 */
+.app-content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* 树状结构样式 */
+.tree-view {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tree-view h2 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.tree-container {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.tree-node {
+  margin-bottom: 0.25rem;
+}
+
+.tree-node-header {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tree-node-header:hover {
+  background-color: #f5f5f5;
+}
+
+.tree-toggle {
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+  color: #666;
+  cursor: pointer;
+}
+
+.tree-node-icon {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+.tree-node-name {
+  font-size: 0.9rem;
+}
+
+.tree-node-children {
+  margin-left: 1rem;
+  margin-top: 0.25rem;
+}
+
+/* CSP 流程样式 */
+.csp-flow {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.csp-flow h2 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.csp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.csp-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+
+.csp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.csp-header h3 {
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+.csp-status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+}
+
+.csp-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.csp-initiation h4,
+.csp-targets h4 {
+  margin-bottom: 0.5rem;
+  color: #34495e;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.25rem;
+}
+
+.csp-target {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 0.75rem;
+  background-color: white;
+  margin-top: 0.5rem;
+}
+
+.csp-target p {
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+/* 服务依赖样式 */
+.service-dependency {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.service-dependency h2 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.dependency-graph {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.dependency-graph svg {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.dependency-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+/* 加载和错误状态 */
+.loading,
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.error {
+  color: #e74c3c;
+}
+
+/* 应用底部 */
+.app-footer {
+  background-color: #2c3e50;
+  color: white;
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .app-nav {
+    flex-direction: column;
+  }
+
+  .csp-details {
+    grid-template-columns: 1fr;
+  }
+
+  .dependency-graph svg {
+    width: 100%;
+    height: 400px;
+  }
+}

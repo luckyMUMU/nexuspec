@@ -1,0 +1,36 @@
+stages:
+  - build
+  - validate
+  - deploy
+
+build:
+  stage: build
+  image: node:18
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+
+validate_contracts:
+  stage: validate
+  image: node:18
+  script:
+    - npm install
+    - npx nxsp validate all
+  artifacts:
+    reports:
+      junit: reports/contract-validation.xml
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event"'
+
+deploy:
+  stage: deploy
+  image: node:18
+  script:
+    - echo "Deploying to production"
+    - # Add your deployment logic here
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_COMMIT_BRANCH == "master" && $CI_PIPELINE_SOURCE == "push"'
